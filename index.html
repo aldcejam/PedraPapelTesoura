@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: linear-gradient(rgb(0, 27, 146), rgb(0, 77, 107));
+        }
+        .container{
+            width: 30vw;
+            margin: 0 auto;
+            background-color: rgba(44, 6, 94, 0.5);
+            color: white;
+        }
+        h1{
+            text-align: center;
+        }
+        .game-players {
+            display: flex;
+            width: max-content;
+            margin: 0 auto;
+        }
+
+        .player_option,
+        .adversary_option {
+            margin-left: 20px;
+        }
+
+        .player_options img,
+        .adversary_options img {
+            width: 150px;
+            opacity: 0.4;
+        }
+
+        .player_options img:hover {
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        .result h3 {
+            font-size: 30px;
+            margin: 20px 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Paper,Rock and Scissor</h1>
+        <div class="game-players">
+            <div class="player_options">
+                <div class="paper"><img src="/paper.png" alt=""></div>
+                <div class="rock"><img src="/rock.png" alt=""></div>
+                <div class="scissor"><img src="/scissor.png" alt=""></div>
+            </div>
+            <div class="adversary_options">
+                <div class="paper"><img src="/paper.png" alt=""></div>
+                <div class="rock"><img src="/rock.png" alt=""></div>
+                <div class="scissor"><img src="/scissor.png" alt=""></div>
+            </div>
+        </div>
+        <div class="result">
+            <h3>JOGAR</h3>
+        </div>
+    </div>
+    <script>
+        const player = document.querySelectorAll('.player_options div img')
+        const opposingPlayer = document.querySelectorAll('.adversary_options div img')
+
+        /* ==== reset players ==== */
+        function ResetPlayerOpacity() {
+            player.forEach(a => {
+                a.style.opacity = 0.3
+            })
+            opposingPlayer.forEach(b => {
+                b.style.opacity = 0.3
+            })
+        }
+        /* ==== Enemy player ==== */
+        function Enemy(random) {
+            opposingPlayer[random].style.opacity = 1
+        }
+
+        /* ==== select brand ==== */
+        player.forEach((item, index) => {
+            item.addEventListener('click', (a) => {
+                ResetPlayerOpacity();
+
+                /* ==== player selected-item ==== */
+                item.style.opacity = 1;
+
+                /* ==== Enemy ==== */
+                let random = Math.floor(Math.random() * 3);
+                Enemy(random);
+
+                /* ==== wins ==== */
+                let result = ""
+                if (index == random) {
+                    result = "empate"
+                } /* == 0=paper, 1=rock, 2=scissor == */
+                else if ((index == 0 && random == 1) || (index == 1 && random == 2) || (index == 2 && random == 0)) {
+                    result = "vitoria"
+                } else {
+                    result = "derrota"
+                }
+
+                /* ==== show result */
+                document.querySelector('.result h3').innerHTML = result
+
+            })
+        })
+    </script>
+</body>
+
+</html>
