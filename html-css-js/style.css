@@ -1,0 +1,38 @@
+body{
+            background-image: linear-gradient(rgb(0, 11, 59), rgb(19, 48, 59));
+        }
+        .container{
+            width: 30vw;
+            margin: 0 auto;
+            background-color: rgb(44, 44, 44);
+            color: white;
+        }
+        h1{
+            text-align: center;
+        }
+        .game-players {
+            display: flex;
+            width: max-content;
+            margin: 0 auto;
+        }
+
+        .player_option,
+        .adversary_option {
+            margin-left: 20px;
+        }
+
+        .player_options img,
+        .adversary_options img {
+            width: 150px;
+            opacity: 0.4;
+        }
+
+        .player_options img:hover {
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        .result h3 {
+            font-size: 30px;
+            margin: 20px 150px;
+        }
